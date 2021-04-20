@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@Html.ActionLink("Mi about", "About") @* Redirigimos al about. No especificamos asp.net Entiende solo que controlador debe ejecutars *@
+@Html.ActionLink("Mi about", "About", "Home", null, new { miAtributo = "valor1", @class = "btn btn-danger" })
+@Html.ActionLink("Mi about", "About", "Home", new { @class = "btn btn-danger" })
+
+
+@Html.Display("Propiedad")
+@Html.Editor("Persona");
+
+
+<br />
+<label>Escoja una opcion:</label>
+@Html.DropDownList("miDropDownList", (List<SelectListItem>)ViewBag.MiListadoEnum) @*Con este metodo, creamos el objeto en la interfaz de usuario*@
+
+

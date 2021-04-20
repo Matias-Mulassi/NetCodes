@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts{
+    <script>
+
+        ejemploJavascript();
+
+        function ejemploJavascript()
+        {
+            var a = 5;
+            var nombre = "Matias";
+            nombre = 7; //Cambio de tipo de dato
+
+            console.log("Mi nombre es: " + nombre);
+
+            //Comparador no estricto == (compara valor, no el tipo)
+
+            if (a == 5) { //Verdadero
+            }
+
+            if (a == "5") { //Verdadero
+            }
+
+            if (a == 6) {//Falso
+            }
+
+
+
+            //Comparacion estricta ===. Compara el valor y el tipo
+
+            if (a === 5) {//Verdadero 
+            }
+
+            if (a === "5") {//Falso 
+            }
+
+            //Igual que en c# las comparaciones numericas se hacen con >, <, <=, >=, !=
+
+            if (a > 2) {// Verdadero 
+            }
+
+
+            //Para operaciones logicas, al igual que en c# se usan && y ||
+
+            if (a > 2 && a < 7) {//VERDADERO
+            }
+
+
+            //Arreglos
+
+            var miArreglo = [];
+
+            miArreglo.push(4); //Agregamos elemento al arreglo.
+            miArreglo.push(5);
+            miArreglo.push("Hola");
+
+            console.log(miArreglo);
+
+            miArreglo.splice(2, 1); //Elimino el tercer elemento del arreglo. Desde la tercera ubicacion, eliminame un elemento del arreglo
+            console.log(miArreglo);
+
+            miArreglo.push("hola2");
+            var ultimoElemento = miArreglo.pop(); //remueve y devuelve el ultimo elemento del arreglo("hola2")
+
+
+            // La función Map permite aplicarle el resultado de una funcion a cada valor
+            //del arreglo. Aquí vemos una funcion anonima (en c# utilizamos el operador lambda)
+
+            var miArregloDuplicado = miArreglo.map(function (valor) {
+                return valor * 2;
+
+            });
+
+            console.log("Arreglo con los elementos duplicados");
+            console.log(miArregloDuplicado);
+
+            var sonTodosMenoresQue10 = miArreglo.every(esMenorQue10); //Verdadero. //Todos los elementos del arreglo cumplen con una condicion especifica. Aca le pasamos como valor cada elemento del arreglo
+
+            var sonTodosIguales5 = miArreglo.every(function (valor) { 
+                return valor === 5;
+            }); //Falso . Aca le pasamos una funcion anonima
+
+            var AlgunElementoEs5 = miArreglo.some(function (valor) {
+                return valor === 5;
+            }); //Verdadero. //Aqui es alguno de los elementos del arreglo es igual a 5.
+
+            var numerosPAres = miArreglo.filter(function (valor)
+            {
+                return valor % 2 === 0;
+            });
+
+            console.log("Numero pares del arreglo:")
+            console.log(numerosPAres);
+
+
+            //Mas funciones de arreglos
+
+            //Objetos
+
+
+            var miObjeto = {}; //Objeto vacio
+
+            var miObjeto2 = {
+                Nombre: "Matias", propiedad2: 42, unaFuncion: esMenorQue10, otraFuncion: function (valor) { return valor * 2; } }; //Objeto con propiedades. En javascript se puede tener una funcion como propiedad
+
+            var esMenor = miObjeto2.unaFuncion(9);
+
+            //Agregamos la propiedad Apellido al objeto2
+
+            miObjeto.apellido = "Mulassi"; //Si no la tiene a la propiedad se la agrega
+
+            console.log(miObjeto);
+
+            //Funciones especiales
+
+            setTimeout(function () {
+                //Esta funcion se ejecuta luego de dos segundo
+
+            }, 2000);
+
+            setInterval(function () {
+                //Esta funcion se ejecuta cada 3 segundos. Se repite varias veces
+                //console.log(new Date());
+
+            },3000);
+        }
+
+
+
+
+        function esMenorQue10(valor) {
+            return valor < 10;
+        }
+
+    </script>>
+    }

@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ejemplo 2: Jquery.post enviando un objeto</h2>
+
+
+<div>
+    <div>
+        <label> Nombre: </label>
+        <input type="text" id="txtNombre" />
+    </div>
+    <div>
+        
+        <label> Edad:</label>
+        <input type="number" id="txtEdad" />
+
+    </div>
+
+    <input type="button" id="btnCrearPersona" value="Crear" />
+</div>
+
+@section scripts{
+    
+    <script>
+        $(function () {
+
+            //Ejemplo 2: Jquery.post enviando un objeto
+            $("#btnCrearPersona").click(function () {
+
+                var url = "@Url.Action("CrearPersona", "Home")"; //Definimos hacia donde va el post
+                var nombre = $("#txtNombre").val(); //Tomamos valores
+                var edad = $("#txtEdad").val();
+                var data = { Nombre: nombre, Edad: edad }; //Creamos objeto
+
+                $.post(url, data).done(function (data) {
+                    if (data.Ok) { //Todo esta ok?
+                        $("#div-alerta").removeClass("alet-danger").addClass("alert-success").slideDown(200);
+                    } else {
+                        $("#div-alerta").removeClass("alert-success").addClass("alert-danger").slideDown(200);
+
+                    }
+
+                    $("#mensaje-alerta").html(data.Mensaje)
+
+                }).fail(manejarErrorAjax);
+
+
+            });
+
+            $("#btn-cerrar-alerta").click(function () {
+                $(this).parent().slideUp(200);
+            });
+
+
+        });
+    </script>
+    }

@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ejemplo 3: Jquery.get - cargar una seccion  de la pagina de manera asincrona</h2>
+
+<input type="button" id="btnCargar" value="Cargar" />
+
+<div id="divGet">
+
+</div>
+
+
+@section scripts{
+    
+    <script>
+        $(function () {
+
+            //Ejemplo 3: Jquery.get
+
+            $("#btnCargar").click(function () {
+
+                $(this).prop("disabled", "disabled"); //Deshabilito el boton una vez presionado
+
+                var url = "@Url.Action("SeccionPrueba","Home")";
+
+                //Aquí uso el metodo get. Si la accion requiere parametros, se puede pasar objetos.
+                $.get(url).done(function (data) {
+                    $("#divGet").append(data);
+                }).fail(manejarErrorAjax);
+            });
+
+
+            //Se ejecuta si hubo un error
+            function manejarErrorAjax(err) {
+                //err.responseText es el texto de error(no siempre recomendable mostrar)
+                console.log(err.responseText);
+            }
+        })
+
+
+
+    </script>
+    
+    
+    
+    
+    
+    
+    }

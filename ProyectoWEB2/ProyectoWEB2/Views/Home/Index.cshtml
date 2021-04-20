@@ -1,0 +1,40 @@
+﻿@model ProyectoWEB2.ViewModels.IndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<h4>Filtrar</h4>
+
+@using (Html.BeginForm(null, null, FormMethod.Get))
+{
+    <label for="edad">Edad</label>
+    <input type="number" name="edad" id="edad" />
+    <input type="submit" value="Filtrar" class="btn btn-success" />
+}
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var persona in Model.Personas)
+        {
+            <tr>
+                <td>@persona.Cedula</td>
+                <td>@persona.Nombre</td>
+                <td>@persona.Edad</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+@{Html.RenderPartial("_paginador", Model);} @*Invoca la vista parcial y le paso el modelo de parametro*@
+

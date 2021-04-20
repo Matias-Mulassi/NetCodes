@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ejemplo 1: Ajax.Form - Ejemplo Basico</h2>
+
+@using (Ajax.BeginForm("Duplicador", new AjaxOptions()
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace, //Reemplazo el contenido de la etiqueta con el de la respuesta. Hay varios metodos
+    UpdateTargetId = "spanDuplicado"
+}))
+{ 
+    <input type="number" name="cantidad"/> <input type="submit" value="Duplicar" /> 
+
+}
+
+Resultado: <span id="spanDuplicado"></span>
+
+@section script
+    {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script> @*Necesario para hacer andar el formulario*@
+    <script>
+        function onBegin(respuesta) {
+            console.log("begin");
+
+        }
+
+    </script>
+    
+    
+    }

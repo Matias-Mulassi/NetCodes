@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ejemplo 1: Jquery.post simple</h2>
+
+
+@Html.TextBox("TxtDuplicador");
+
+<input type="button" id="btnDuplicar" value="Duplicar!" />
+<br />
+
+Duplicado: <span id="spanDuplicado">   </span>
+
+@section scripts{
+    <script>
+        $(function () {
+            //Ejemplo1: Jquery.Post.Simple
+            $("#btnDuplicar").click(function () { //Al darle click a esta funcion, se ejecuta esta funcion
+
+                var url = "@Url.Action("Duplicador","Home")"; //Codigo c# dentro de javascript. Activa el action del HomeController
+                var cantidad = $("#TxtDuplicador").val(); //Obtener el valor del textbox
+                var data = { cantidad: cantidad }; //Creamos un objeto.
+
+                //Jquery 1.5+
+                $.post(url, data).done(function (data) { //Esto envia el post hacia el controlador. Es operacion asincrona. Peticion hacia c# y hay que esperar a que termine
+                    //Se ejecuta si la operación fue un exito.
+                    $("#spanDuplicado").html(data);
+
+                }).fail(manejarErrorAjax).always(function () {
+                    //Esta funcion siempre se ejecuta
+
+                });
+
+            });
+
+            //Se ejecuta si hubo un error
+            function manejarErrorAjax(err){
+                //err.responseText es el texto de error(no siempre recomendable mostrar)
+                console.log(err.responseText);
+            }
+        });
+
+
+
+
+
+
+    </script>
+
+
+
+    
+    }
+

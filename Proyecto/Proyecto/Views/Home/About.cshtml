@@ -1,0 +1,37 @@
+﻿@model List<Proyecto.Models.Pelicula>
+
+@{
+    ViewBag.Title = "About";
+    string nombre = "Felipe";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<!---Al pasar objetos desde el controlador a la vista, se utiliza mayuscula en el modelo-->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Pais</th>
+                <th>Lanzamiento</th>
+                <th>Duración</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pelicula in Model)
+            {
+            <tr>
+                <td>@pelicula.Titulo</td>
+                <td>@pelicula.Pais</td>
+                <td>@pelicula.Publicacion.ToString("dd/MM/yyyy")</td>
+                <td>@pelicula.Duracion</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+@Html.Partial("_ListadoPersonas",(List<Proyecto.Controllers.Persona>)ViewBag.MiListado)
+
+

@@ -1,0 +1,5 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Html.Partial("_ListadoPersonas",(List<Proyecto.Controllers.Persona>)ViewBag.MiListado) @*Aquí incluyo la vista parcial de SharedFolder*@

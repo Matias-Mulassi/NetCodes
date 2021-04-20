@@ -1,0 +1,48 @@
+﻿@model Proyecto.Controllers.Persona
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h4>
+    @ViewBag.Message
+
+</h4>
+
+@*Haciendo un Formulario *@
+
+@using (Html.BeginForm("Index", "Home")) //Acá se indica primero el action name y despues el controller
+
+{
+    /* Hacerlo Manual
+    <div>
+        @Html.LabelFor(Model => Model.Nombre)
+        @Html.EditorFor(Model => Model.Nombre) @*Crea automaticamente el input con id y name de acuerdo a la propiedad*@
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.Edad)
+        @Html.EditorFor(Model => Model.Edad) @*Crea automaticamente el input con id y name de acuerdo a la propiedad*@
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.Empleado)
+        @Html.EditorFor(Model => Model.Empleado) @*Crea automaticamente el input con id y name de acuerdo a la propiedad*@
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.Nacimiento)
+        @Html.EditorFor(Model => Model.Nacimiento) @*Crea automaticamente el input con id y name de acuerdo a la propiedad*@
+    </div>
+
+        */
+
+    //En una sola linea de codigo
+
+    @Html.EditorForModel(); //Aqui ASP.NET Crea automaticamente para el modelo un formulario. Nos abstraemos de la interfaz usuario
+
+    <input type="submit" value="Enviar" />
+
+
+
+}

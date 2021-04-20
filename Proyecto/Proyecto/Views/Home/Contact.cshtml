@@ -1,0 +1,79 @@
+﻿@model List<Proyecto.Models.Pelicula>
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = null;
+}
+
+
+<h1>Pagina de contactos</h1>
+<!---
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<h3>@ViewBag.UnInt</h3>
+<h3>@ViewBag.UnaFecha</h3>
+<h4>@ViewData["Mi mensaje"]</h4>
+
+    -->
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+
+
+<!---Haciendo un formulario
+<form action="/home/contact" method="post">
+    <input type="number" id="edad" name="edad" />
+
+    <input type="submit" value="Enviar" />
+
+
+</form>
+
+    -->
+<!--
+<div>
+    Mostrando @Model.Count peliculas
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Genero</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pelicula in Model)
+        {
+            @* Se coloca la clase danger si la pelicula no está en cartelera*@
+            var claseFila = (!pelicula.EstaEnCartelera) ? "danger" : string.Empty;
+
+
+        <tr class="@claseFila">
+            <td>
+                @pelicula.Titulo
+            </td>
+            <td>
+                @pelicula.Genero
+            </td>
+        </tr>
+
+        }
+    </tbody>
+
+</table>
+
+
+
+
